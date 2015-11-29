@@ -7,7 +7,7 @@ class Model_Training extends Model
 	public function get_training()
 	{	
 		$i = 0;
-		$user_id = 2;
+		$user_id = 1;
 		
 		$connection = $this->connection;
 		$connection->query('SET NAMES utf8;');

@@ -14,16 +14,16 @@ echo 	'<html>
 			<div id="nav">
 
 				<ul>
-					<li><a href = "#"> News </a></li>
-					<li><a href = "#"> Training </a></li>
+					<li><a href = "http://'.$host.'/Feed/feed"> News </a></li>
+					<li><a href = "http://'.$host.'/Training/training"> Training </a></li>
 					<li><a href = "#"> People </a></li>
 					<li><a href = "#"> Messages </a></li>
 					<li><a href = "#"> Statistica </a></li>
 					<li><a href = "#"> Profile </a></li>
 					<li><a href = "#"> Setings </a></li>
 				</ul>
-
 			</div>
+			<span>'.$_SESSION['user_first_name'].' '.$_SESSION['user_last_name'].'</span>
 		</div>
 		<div id="main">' ;
 		
