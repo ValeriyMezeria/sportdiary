@@ -24,11 +24,13 @@ echo 	'<html>
 				</ul>
 
 			</div>
-		</div>';
+		</div>
+		<div id="main">' ;
 		
 		include 'application/views/'.$content_view;
 		
-echo '	<div id="footer"> footer </div>
+echo '</div>	
+<div id="footer"> footer </div>
 		</body>
 		</html>
 				';

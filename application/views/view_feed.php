@@ -7,7 +7,7 @@ $host = $_SERVER['HTTP_HOST'];
 
 
 
-echo 	'<div id="main">'; 
+
 	for($i = 0; $i < count($data); $i++)
 	{
 		
@@ -64,8 +64,6 @@ echo 	'<div id="main">';
 					<a href=""><img src="http://'.$host.'/images/Comment.png"></a>	<text class="isDoNotPressed"> '.$comments.' </text>
 					<a href=""><img src="http://'.$host.'/images/Like.png"></a> 	<text class="isPressed">'.$likes.'</text>
 				</div>
-			</div>
-		</div>';
+			</div>';
 	}
 		
-echo '';
