@@ -23,12 +23,25 @@ function days_in_month($cur = 0)
 	}
 }
 
+function training_status($data, $date)
+{
+	for($i = 0; $i < count($data) - 1; $i++)
+		if($data[$i]['training_date'] == $date)
+			if($data[$i]['training_status'] == 'done')
+				return 'training_done';
+			else if ($data[$i]['training_status'] == 'missed')
+				return 'training_missed';
+			else 
+				return 'training_sheduled';
+	
+	return '';
+}
 
 
 
 echo '<div id="info_training">
-Number of completed training in month:</h3> <br> <text>6</text> <br>
-Total time on trainings in month:<br> <text>20:34:05</text>
+Number of completed training in month:</h3> <br> <text>'.$data[count($data) - 1]['training_num'].'</text> <br>
+Total time on trainings in month:<br> <text>'.$data[count($data) - 1]['training_time'].'</text>
 <div id="info_kind_of_sports">
 Kinds of sports:<br>
 <img src="images/KindsOfSports1.png">
@@ -56,13 +69,20 @@ Kinds of sports:<br>
 
 				$cur_day_num = date('j');
 				$cur_week_day = date('N');
+				$cur_month_num = date('m');
+				
 				$prev_month = days_in_month(-1);
 				$next_month = days_in_month(1);
+				
 				$back = 6 + $cur_week_day;
 				$forward = 20 - $back;
 				
+				
 				if($back > $cur_day_num)
+				{
 					$start = $prev_month - $back + $cur_day_num;
+					$cur_month_num -= 1;
+				}
 				else
 					$start = $cur_day_num - $back;
 				
@@ -71,31 +91,33 @@ Kinds of sports:<br>
 				else
 					$end = $cur_day_num + $forward;
 				
-				var_dump($end);
-				
 				$count = 0;
 				for($i = $start; $count < 21; $i++)
 				{
 					$count++;
 					
 					if($i > days_in_month() && $i > $cur_day_num)
+					{
 						$i = 1;
+						$cur_month_num += 1;
+					}
 					
 					if($i == $back + 1)
+					{
 						$i = $cur_day_num;
+						$cur_month_num = date('m');
+					}
 					
-					if($i)
-						
-					echo '<td><a href="#">'.$i.'</a></td>';
+					echo '<td class="'.training_status($data, date('Y-'.$cur_month_num.'-'.$i.'')).'"><a href="#">'.$i.'</a></td>';
 					
 					if($count % 7 == 0)
 						echo '</tr>';
 				}
 				
 			echo '	</table>
-				</div>';
+					</div>';
 
-for($i = 0; $i < count($data); $i++)
+for($i = 0; $i < count($data) - 1; $i++)
 {
 	extract($data[$i], EXTR_OVERWRITE);
 	
@@ -134,7 +156,7 @@ for($i = 0; $i < count($data); $i++)
 					</tr>';
 					
 					
-					for(; $i < count($data); $i++)
+					for(; $i < count($data) - 1; $i++)
 					{
 						extract($data[$i], EXTR_OVERWRITE);
 						

@@ -51,6 +51,11 @@ class Model_Training extends Model
 			$result[$i++]['kos_icon'] = $row['icon'];	
 		}
 		
+		$query_result = $connection->query('SELECT SEC_TO_TIME(sum(TIME_TO_SEC(total_time))) as time, count(id) training_num  FROM training WHERE user_id ='.$user_id.';');
+		$row = $query_result->fetch_assoc();
+		
+		$result[$i]['training_num'] = $row['training_num'];
+		$result[$i]['training_time'] = $row['time'];
 		
 		return $result;
 	}
