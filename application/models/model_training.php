@@ -4,10 +4,10 @@ session_start();
 class Model_Training extends Model
 {
 	
-	public function get_training()
+	public function get_training($user_id)
 	{	
 		$i = 0;
-		$user_id = 1;
+		//$user_id = 1;
 		
 		$connection = $this->connection;
 		$connection->query('SET NAMES utf8;');

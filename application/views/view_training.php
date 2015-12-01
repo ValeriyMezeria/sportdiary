@@ -4,10 +4,12 @@ session_start();
 $host = $_SERVER['HTTP_HOST'];
 
 //работа с датами
-function days_in_month($cur = 0)
+function days_in_month($cur)
 {
-	$cur_month_num = date('m');
-	$cur_month_num += $cur;
+	$cur_month_num = $cur;
+	//$cur_month_num += $cur;
+	
+
 	
 	if($cur_month_num % 2 == 0 || $cur_month_num == 8)
 		return 31;
@@ -70,6 +72,7 @@ Kinds of sports:<br>
 				$cur_day_num = date('j');
 				$cur_week_day = date('N');
 				$cur_month_num = date('m');
+				$cur_year_num = date('Y');
 				
 				$prev_month = days_in_month(-1);
 				$next_month = days_in_month(1);
@@ -80,14 +83,14 @@ Kinds of sports:<br>
 				
 				if($back > $cur_day_num)
 				{
-					$start = $prev_month - $back + $cur_day_num;
 					$cur_month_num -= 1;
+					$start = days_in_month($cur_month_num) - $back + $cur_day_num;
 				}
 				else
 					$start = $cur_day_num - $back;
 				
-				if($cur_day_num + $forward > days_in_month())
-					$end = $cur_day_num + $forward - days_in_month();
+				if($cur_day_num + $forward > days_in_month($cur_month_num))
+					$end = $cur_day_num + $forward - days_in_month($cur_month_num);
 				else
 					$end = $cur_day_num + $forward;
 				
@@ -96,17 +99,20 @@ Kinds of sports:<br>
 				{
 					$count++;
 					
-					if($i > days_in_month() && $i > $cur_day_num)
+					if($i > days_in_month($cur_month_num) && $i > $cur_day_num)
 					{
 						$i = 1;
-						$cur_month_num += 1;
+						if($cur_month_num != 12)
+							$cur_month_num += 1;
+						else
+							$cur_month_num = 1;
 					}
 					
-					if($i == $back + 1)
+					/*if($i == $back + 1)
 					{
 						$i = $cur_day_num;
 						$cur_month_num = date('m');
-					}
+					}*/
 					
 					echo '<td class="'.training_status($data, date('Y-'.$cur_month_num.'-'.$i.'')).'"><a href="#">'.$i.'</a></td>';
 					

@@ -43,10 +43,14 @@ class Authentification
 		
 		$result = $connection->query('SELECT * FROM users WHERE email=\''.$email.'\' and password=\''.$password.'\';');
 
-		if(isset($result))
+		
+		
+		if(isset($result) && !empty($result))
 		{
+			var_dump($result);
 			$result = $result->fetch_assoc();
-			
+			if($result == null)
+				return false;
 			$_SESSION['user_id'] = $result['id'];
 			$_SESSION['user_first_name'] = $result['first_name'];
 			$_SESSION['user_last_name'] = $result['last_name'];

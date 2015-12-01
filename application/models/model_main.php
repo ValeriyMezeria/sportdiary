@@ -6,9 +6,7 @@ class Model_Main extends Model
 {
 	
 	public function try_login($email, $password)
-	{	
-		$i = 0;
-		
+	{		
 		$authentification = new Authentification();
 		
 		if($authentification->login($email, $password))

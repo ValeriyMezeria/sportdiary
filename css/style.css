@@ -1,3 +1,131 @@
+/*people search*/
+#search_box {
+	width: 100%;
+	margin: 5px 0px 10px 0px;
+}
+
+#text_search_people {
+	width: 580px;
+	font-size: 16px;
+}
+
+#filter_box {
+	font-size: 18px;
+	float: right;
+	display: inline-table;
+	width: 210px;
+	padding: 0px 0px 0px 5px;
+	border-left: 1px solid #E0E0E0;
+}
+
+#text_age {
+	width: 40px;
+	text-align: center;
+}
+
+#submit_search_people {
+	width: 100px;
+	height: 25px;
+	text-align: center;
+	border: 1px solid #E0E0E0;
+	border-radius: 12px;
+	background: white;
+	font-size: 16px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#submit_add_people {
+	height: 25px;
+	text-align: center;
+	border: 1px solid #A9D0F5;
+	color: #2E9AFE;
+	border-radius: 12px;
+	background: #F2F2F2;
+	font-size: 14px;
+    text-decoration: none;
+}
+
+#submit_remove_people {
+	height: 25px;
+	text-align: center;
+	border: 1px solid #F5A9A9;
+	color: #F78181;
+	border-radius: 12px;
+	background: #F2F2F2;
+	font-size: 14px;
+    text-decoration: none;
+}
+
+
+#search_box_with_people{
+	float: left;
+	height: 500px;
+	width: 580px;
+	display: inline-table;
+
+}
+
+#found_people {
+	float: left;
+	width: 500px;
+	height: 54px; 
+	border-bottom: 1px solid #E0E0E0;
+	padding: 10px 5px 15px 5px;
+	margin: 2px 0px 5px 0px;
+}
+
+#found_people_info {
+	margin: 2px 2px 2px 2px;
+	display: inline-table;
+	/*background: blue;*/
+	float: left;
+	height: 50px;
+}
+#found_people_info  a{
+	text-decoration: none;
+	color: black;
+}
+
+#found_people_name {
+	margin: 2px 2px 2px 2px;
+	font-size: 18px;
+}
+
+#found_people_age {
+	color: gray;
+	margin: 10px 2px 2px 2px;
+}
+
+#found_people_ava {
+	float: left;
+	display: inline-table;
+	margin: 2px 2px 2px 2px;
+	
+}
+
+#found_people_ava img {
+	width: 58px; 
+	height:58px;
+	border-radius: 29px;
+	border: 1px solid #E0E0E0;
+}
+
+#found_people_add{
+	float: right;
+	margin: 2px 2px 2px 2px;
+}
+
+#not_found_people {
+	float: left;
+	width: 500px;
+	font-size: 30px;
+	text-align: center;
+	padding: 10px 5px 15px 5px;
+	margin: 2px 0px 5px 0px;
+}
+
 /*main/login/registration*/
 #login {
 	color: #606468;

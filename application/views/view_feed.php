@@ -59,11 +59,13 @@ $host = $_SERVER['HTTP_HOST'];
 						';
 			}
 			
-			echo '<div id="post_footer">
+			echo '
+			<div id="post_footer">
 				<div id="post_footer_icon">
 					<a href=""><img src="http://'.$host.'/images/Comment.png"></a>	<text class="isDoNotPressed"> '.$comments.' </text>
 					<a href=""><img src="http://'.$host.'/images/Like.png"></a> 	<text class="isPressed">'.$likes.'</text>
 				</div>
+			</div>
 			</div>';
 	}
 		

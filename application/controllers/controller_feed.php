@@ -11,7 +11,7 @@ class Controller_Feed extends Controller
 		$auth_opt = $authentification->get_auth_opt();
 		
 		$model = new Model_Feed();
-		$data = $model->get_posts();
+		$data = $model->get_posts($auth_opt['user_id']);
 		
 		$this->view->generate('view_feed.php', 'view_skeleton.php', $data, $auth_opt);
 	}

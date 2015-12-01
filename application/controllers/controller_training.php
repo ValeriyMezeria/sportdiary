@@ -11,7 +11,7 @@ class Controller_Training extends Controller
 		$auth_opt = $authentification->get_auth_opt();
 		
 		$model = new Model_Training();
-		$data = $model->get_training();
+		$data = $model->get_training($auth_opt['user_id']);
 		
 		$this->view->generate('view_training.php', 'view_skeleton.php', $data, $auth_opt);
 	}

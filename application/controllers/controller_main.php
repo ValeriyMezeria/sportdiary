@@ -11,6 +11,11 @@ class Controller_Main extends Controller
 		$model = new Model_Main();
 		$host = $_SERVER['HTTP_HOST'];
 		
+		if($_GET['logout'] == 1)
+		{
+			$authentification = new Authentification();
+			$authentification->logout();
+		}
 		
 		if($_GET['recieve'] == 1)
 		{
@@ -23,7 +28,8 @@ class Controller_Main extends Controller
 			}
 			else
 			{
-				$options['def_email'] = $_POST['email']; 
+				$options['def_email'] = $_POST['email'];
+				$options['result'] = 'Login error!';				
 				$this->view->generate('view_main_login.php', 'view_skeleton_main.php', $data, $auth_opt, $options);
 			}
 		}
