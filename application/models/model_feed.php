@@ -14,7 +14,7 @@ class Model_Feed extends Model
 		$query_result = $connection->query('SELECT posts.id, posts.date, posts.text, posts.is_photos, users.first_name, users.last_name, users.avatar, training.name, training.total_time, training.calories, training.description, training.feeling
 											FROM (posts LEFT JOIN users on users.id = posts.user_id) 
 														LEFT JOIN training on posts.training_id = training.id
-											WHERE posts.user_id = (SELECT follower_id
+											WHERE posts.user_id IN (SELECT follower_id
 																  FROM followers
 																  WHERE user_id ='.$user_id.' ) OR posts.user_id ='.$user_id.';');
 		

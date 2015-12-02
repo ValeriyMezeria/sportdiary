@@ -1,3 +1,99 @@
+/*-------------------------dialog box---------------------------*/
+.dialogues_table {
+	width: 100%;
+	border-bottom: 1px solid #E0E0E0; 
+}
+
+.dialogues_table td{
+	width: 100%;
+	border-top: 1px solid #E0E0E0; 
+}
+
+
+#dialog_box {
+	width: 100%;
+	height:70px;
+}
+
+.dialogues_table form textarea {
+	
+	margin-top: 20px;
+	max-width: 800px; 
+	max-height: 100px;
+	width: 800px;
+	height: 100px;
+}
+
+
+.dialogues_table form input[type="submit"] {
+	width: 50px;
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+	border-collapse: collapse;
+}
+
+#dialog_box_last_message {
+	position: relative;
+	width: 500px;
+	height: 40px;
+	margin: 15px 10px 0px 0px;
+	background: #F2F2F2;
+	display: inline-table;
+	float: right;
+
+}
+#dialog_box_last_message_text {
+	position: relative;
+	float: left;
+	width: 430px;
+	height: 40px;
+	line-height: 19.2px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	text-align: left;
+
+}
+
+#dialog_box_last_message  img{
+	margin-right: 10px;
+	float: left;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	border: 1px solid #E0E0E0;
+}
+
+#dialog_box_message_user_name {
+	font-size: 18px;
+	
+}
+#dialog_box_message_user_name  a{
+	text-decoration: none;
+	color: black;
+}
+
+#dialog_box_message_date {
+
+	float:right;
+	color: gray;
+	font-size:14px;
+}
+
+#dialog_box_message_text {
+	float: left;
+	width: 500px;
+
+}
+
+#dialog_box_message  img{
+	margin-right: 10px;
+	float: left;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	border: 1px solid #E0E0E0;
+}
+
 /*people search*/
 #search_box {
 	width: 100%;
