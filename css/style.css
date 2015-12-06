@@ -305,7 +305,7 @@
 	background-color: #d44179;
 }
 
-/*feed*/
+/*feed--------------------------------*/
 .isPressed{
 	color: black;
 	font-weight: 800;
@@ -326,6 +326,24 @@
 	float: left;
 	border-radius: 5px;
 	box-shadow: 1px 1px 8px 1px #E0E0E0;
+}
+
+#post_body form textarea {
+	max-width: 780px; 
+	max-height: 60px;
+	width: 780px;
+	height: 60px;
+	
+}
+
+#post_body form input[type="submit"]  {
+	float: right;
+}
+
+#post_body form input[type="file"] {
+	font-size:14px;
+	width: 240px;
+	height:30px;
 }
 
 #post_body a{
@@ -386,6 +404,13 @@
 
 #post_body_training {
 	margin: 2px 2px 10px 2px;
+}
+
+#post_body_training table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: auto;
+	border-color: black;
 }
 
 #post_body_img {
