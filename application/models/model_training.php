@@ -59,5 +59,51 @@ class Model_Training extends Model
 		
 		return $result;
 	}
-
+	
+	function get_all_exercises()
+	{
+		$i = 0;
+		
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		$query_result = $connection->query('SELECT id, name FROM kinds_of_exercises;');
+		
+		while($row = $query_result->fetch_assoc())
+		{
+			$result[$i++] = $row;
+		}
+		
+		return $result;
+	}
+	
+	function add_training()
+	{
+		$i = 0;
+		$user_id = $_SESSION['user_id'];
+		
+		extract($_POST, EXTR_OVERWRITE);
+	
+	
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		
+		$connection->query('INSERT INTO training (name, total_time, calories, status, feeling, date, description, user_id) 
+											VALUES(\''.$name.'\', \''.$total_time.'\', \''.$calories.'\', \''.$status.'\', \''.$feeling.'\', \''.$date.'\', \''.$description.'\', \''.$user_id.'\');
+											');
+		
+		
+		$query_result = $connection->query('SELECT id FROM training ORDER by id DESC LIMIT 1;');	
+		$row = $query_result->fetch_assoc();
+		$training_id  = $row['id'];
+			
+		for($i = 0; $i < count($approach); $i++)
+		{
+			$connection->query('INSERT INTO exercises (approach, repetition, value, result, intensity, kind_of_exercise, training_id)
+								VALUES(\''.$approach[$i].'\', \''.$repetition[$i].'\', \''.$value[$i].'\', \''.$result[$i].'\', \''.$intensity[$i].'\',\''.$exercise[$i].'\', \''.$training_id.'\');');
+		}
+		
+	}
+	
 }

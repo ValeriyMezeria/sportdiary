@@ -7,7 +7,7 @@ class Model_Feed extends Model
 	public function get_posts($user_id)
 	{	
 		$i = 0;
-		$user_id = 1;
+		//$user_id = 1;
 		
 		$connection = $this->connection;
 		$connection->query('SET NAMES utf8;');
