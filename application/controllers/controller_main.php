@@ -55,6 +55,7 @@ class Controller_Main extends Controller
 			}
 			else
 			{
+				
 				$this->view->generate('view_main_registration.php', 'view_skeleton_main.php', $data, $auth_opt, $options);
 			}
 		}

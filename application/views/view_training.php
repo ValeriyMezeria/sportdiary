@@ -27,14 +27,17 @@ function days_in_month($cur)
 
 function training_status($data, $date)
 {
+	
 	for($i = 0; $i < count($data) - 1; $i++)
+	{
 		if($data[$i]['training_date'] == $date)
 			if($data[$i]['training_status'] == 'done')
 				return 'training_done';
 			else if ($data[$i]['training_status'] == 'missed')
 				return 'training_missed';
-			else 
+			else if ($data[$i]['training_status'] == 'sheduled')
 				return 'training_sheduled';
+	}
 	
 	return '';
 }
@@ -81,7 +84,7 @@ Kinds of sports:<br>
 				$forward = 20 - $back;
 				
 				
-				if($back > $cur_day_num)
+				if($back >= $cur_day_num)
 				{
 					$cur_month_num -= 1;
 					$start = days_in_month($cur_month_num) - $back + $cur_day_num;
@@ -114,14 +117,16 @@ Kinds of sports:<br>
 						$cur_month_num = date('m');
 					}*/
 					
-					echo '<td class="'.training_status($data, date('Y-'.$cur_month_num.'-'.$i.'')).'"><a href="#">'.$i.'</a></td>';
+					echo '<td class="'.training_status($data, date('Y-'.$cur_month_num.'-'.(($i < 10) ? ('0'.$i) : $i).'')).'"><a href="#">'.$i.'</a></td>';
 					
 					if($count % 7 == 0)
 						echo '</tr>';
 				}
 				
 			echo '	</table>
+					<a href="http://'.$host.'/Training/add_training"><div id="button_add_training">add training</div></a>
 					</div>';
+					
 
 for($i = 0; $i < count($data) - 1; $i++)
 {
@@ -141,7 +146,7 @@ for($i = 0; $i < count($data) - 1; $i++)
 					</div>
 				</div>
 				<div id="post_header_close">
-						delete
+						<a href="http://'.$host.'/Training/training?delete_training='.$training_id.'">delete</a>
 				</div>
 			</div>
 			
@@ -171,8 +176,8 @@ for($i = 0; $i < count($data) - 1; $i++)
 							<td>'.$koe_name.'</td>
 							<td>'.$exercises_approach.'</td>
 							<td>'.$exercises_repetition.'</td>
-							<td>'.($koe_mov == '' ? '-' : $exercises_value).'</td>
-							<td>'.($koe_mor == '' ? '-' : $exercises_result).'</td>
+							<td>'.(isset($koe_mov) ? ($exercises_value.' '.$koe_mov) : '-').'</td>
+							<td>'.(isset($koe_mor) ? ($exercises_result.' '.$koe_mor) : '-').'</td>
 							<td>'.$exercises_intensity.'</td>
 						</tr>';
 					
@@ -187,7 +192,7 @@ for($i = 0; $i < count($data) - 1; $i++)
 			
 			<div id="post_footer">
 				<div id="post_footer_icon">
-					<a href=""><img src="images/Share.png"></a> 	<text class="isPressed"> share </text>
+					<a href="http://'.$host.'/Training/training?add_training_post='.$training_id.'"><img src="http://'.$host.'/images/Share.png"></a> 	<text class="isPressed"> share </text>
 				</div>
 			</div>
 		</div>

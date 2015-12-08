@@ -1,3 +1,197 @@
+
+.isPressed{
+	color: black;
+	font-weight: 800;
+	padding-bottom: 5px;
+}
+
+.isDoNotPressed {
+	color: gray;
+}
+/*------------td table training------------*/
+.training_done {
+	background-color: rgba(0, 255, 0, 0.3);
+}
+
+.training_sheduled {
+	background-color: grey;
+}
+
+.training_missed {
+	background-color: rgba(255, 0, 0, 0.2);
+	
+}
+
+/*----------------------statistica-----------------------*/
+
+.icon_statistica {
+	width: 9px;
+	height: 20px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.table_search_exercise {
+	width: 100%;
+	text-align: center;
+}
+
+.table_search_exercise td{
+	max-width: 120px;
+	word-wrap: break-word;
+	border-bottom: 1px solid #E0E0E0;	
+}
+
+.table_search_exercise a{
+	color: Blue;
+	text-decoration: none;
+}
+
+#statistica_menu {
+	padding: 2px 10px;
+	width: 195px;
+	background: #E8E8E8;
+	border: 1px solid #E8E8E8;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-color: #BDBCBC;
+	font-size: 20px;
+	
+}
+
+#statistica_menu a{
+	color: black;
+	text-decoration: none;
+}
+
+.text_name {
+	font-size: 24px;
+}
+
+#statistica_exercise {
+	float: left;
+	width: 500px;
+	border-bottom: 1px solid #E0E0E0;
+	padding: 10px 5px 15px 5px;
+	margin: 2px 0px 5px 0px;
+}
+
+
+
+#filter_box  select{
+	background-color: white;
+	color: black;
+	margin: 2px 2px 2px 2px;
+	height: 25px;
+	width: 200px;
+	border: 1px solid #E0E0E0;
+	border-color: white white #E0E0E0 white;
+}
+
+/*-----------------------My page----------------------*/
+
+#button_my_page {
+	width: 250px;
+}
+
+#button_my_page form  input[type="submit"], input[type="file"]{
+	width: 100%;
+	height: 30px;
+	margin: 2px 0px;
+	font-size: 18px;
+}
+
+.imageForMyPage {
+	border: 1px solid #E0E0E0; 
+	width: 248px;
+	height: 248px;
+	float: left;
+	margin-bottom: 10px;
+}
+
+.scroll_followers {
+	width: 100%;
+	height: 100px;
+	margin:5px 0px;
+	background: blue;
+}
+
+.description_wrap {
+
+	height: 130px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#my_page_info {
+	padding-left: 5px;
+	display: block;
+	height: 250px;
+	margin: 0px 0px 10px 255px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	text-align: left;
+	font-size: 18px;
+}
+
+
+
+.name_wrap {
+	font-size: 30px;
+
+}
+
+ .wrap {
+	margin: 10px 0px 20px 0px;
+	width: 800px;
+	height: 180px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	border-top: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+ }
+
+.wrap ul {
+	min-width: 100%;
+	white-space: nowrap;
+	padding: 0;
+}
+
+ 
+
+ .wrap li {
+	display: inline-block;
+	vertical-align: top;
+	width: 100px;
+	height: 100px;
+	margin-right: 20px;
+ }
+
+ .wrap li img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	border: 1px solid #E0E0E0;
+}
+
+.name_follower {
+	margin-top: 5px;
+	display: block;
+	text-align: center;
+	font-size:16px;
+	text-decoration: none;
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+
 /*-------------------------dialog box---------------------------*/
 .dialogues_table {
 	width: 100%;
@@ -94,7 +288,8 @@
 	border: 1px solid #E0E0E0;
 }
 
-/*people search*/
+/*---------------search-----------------------------*/
+
 #search_box {
 	width: 100%;
 	margin: 5px 0px 10px 0px;
@@ -119,6 +314,7 @@
 	text-align: center;
 }
 
+
 #submit_search_people {
 	width: 100px;
 	height: 25px;
@@ -131,6 +327,24 @@
     text-decoration: none;
     text-transform: uppercase;
 }
+
+#button_add_training {
+	height: 25px;
+	text-align: center;
+	border: 1px solid #A9D0F5;
+	color: #2E9AFE;
+	border-radius: 12px;
+	background: #F2F2F2;
+	font-size: 20px;
+    text-decoration: none;
+	margin: 5px 0px;
+}
+
+#button_add_training a {
+	text-decoration: none;
+}
+
+
 
 #submit_add_people {
 	height: 25px;
@@ -162,6 +376,8 @@
 	display: inline-table;
 
 }
+
+
 
 #found_people {
 	float: left;
@@ -222,100 +438,190 @@
 	margin: 2px 0px 5px 0px;
 }
 
-/*main/login/registration*/
-#login {
-	color: #606468;
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-size: 14px;
-	line-height: 1.5em;
-}
 
-#login a {
-	color: #eee;
-	text-decoration: none;
-}
 
-#login a:hover {
-	text-decoration: underline;
-}
+/*------------kinds_of_sport_table------------------*/
 
-#login p {
-	line-height: 1.5em;
+#add_kinds_of_sport table {
+	width: 700px;
+	margin: auto;
 	text-align: center;
 }
 
-#login_text {
-	font-size: 14pt;
-	width: 100px;
+#add_kinds_of_sport table img{
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+	border: 1px solid #E0E0E0;
+	padding: 5px;
+	margin: 10px;
 }
 
-#login_position {
-	width: 280px;
-	margin: 150px auto;
+
+
+/*-------------------add_training-------------------*/
+
+#add_training {
+	margin: 2px 2px 10px 2px;
 }
 
-#registration_position {
-	width: 630px;
-	margin: 100px auto;
-}
-
-#registration_block {
-	display: inline-table;
-	margin-left: 20px;
-}
-
-#login form input {
-	height: 40px;
-	outline:none;
-}
-
-#login form select {
-	height: 40px;
-	width: 280px;
-}
-#login form input {
-	border: none;
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-size: 14px;
-	border-radius: 3px;
-}
-
-#login form input[type="text"], input[type="password"], input[type="date"], input[type="email"], select[type="gender"]{
-	background-color: #3b4148;
-	color: #606468;
-	padding: 0 16px;
-	width: 248px;
-	
-}
-
-#login form input:focus {
-	color:#fff;
-}
-
-#login form input[type="submit"] {
-	background-color: #ea4c88;
-	color: #eee;
-	font-weight: bold;
-	text-transform: uppercase;
-	cursor:pointer;
-	width: 280px;
-}
-
-#login form input[type="submit"]:hover {
-	background-color: #d44179;
-}
-
-/*feed--------------------------------*/
-.isPressed{
+#add_training form input[type="date"], input[type="text"], select[type="feeling"], select[type="status"], input[type="time"]{
+	background-color: white;
 	color: black;
-	font-weight: 800;
-	padding-bottom: 5px;
+	margin: 2px 2px 2px 2px;
+	height: 25px;
+	width: 200px;
+	border: 1px solid #E0E0E0;
+	border-color: white white #E0E0E0 white;
 }
 
-.isDoNotPressed {
-	color: gray;
+
+#add_training form input[type="submit"] {
+	
+	margin: 2px 2px 2px 2px;
+	padding: 2px 2px 2px 2px;
+	border-collapse: collapse;
 }
 
+.button_add {
+	width:24px;
+	height:24px;
+	border-radius: 12px;
+	background: green;
+	float: right;
+}
+
+.button_delete {
+	width:24px;
+	height:24px;
+	border-radius: 12px;
+	background: red;
+	float: right;
+}
+
+#add_training textarea {
+	max-width: 800px; 
+	width: 800px;
+}
+#add_training table {
+	border-collapse: collapse;
+}
+
+.table_exercise {
+	width: 100%;
+	margin: 5px auto;
+	border-color: gray;
+	border-collapse: collapse;
+}
+
+.table_exercise  input[type="submit"] {
+	display: block;
+	margin: auto;
+	text-align: center;
+	padding: 3px 5px;
+}
+
+.table_exercise  input[type="text"] {
+	width: 150px;
+}
+
+.table_exercise  textarea {
+	max-width: 558px; 
+	max-height: 60px;
+	width: 558px;
+	height: 60px;
+}
+
+#header_exercise  form select[type="result"], select[type="type_value"]{
+	background-color: white;
+	color: black;
+	height: 25px;
+	width: 50px;
+	border: 1px solid #E0E0E0;
+	border-color: white white #E0E0E0 white;
+}
+
+.table_parametrs {
+	font-size: 16px;
+	margin: 5px 0px;
+}
+
+#choose_exercise {
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+
+#choose_exercise img {
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+	border: 1px solid #E0E0E0;
+	padding: 5px;
+}
+
+
+
+#header_exercise {
+	display:block;
+	width:100%;
+}
+
+#header_exercise table {
+	margin: 10px 0px 10px 0px;
+	width: 100%;
+	border-color: black;
+	border-collapse: collapse;
+}
+
+#header_exercise form input[type="text"] {
+	padding: 0px;
+	margin: 0px;
+	border: 1px solid #E0E0E0;
+	border-color: white white #E0E0E0 white;
+}
+
+#header_image {
+	float: left;
+
+	display:inline-table;
+
+}
+
+#header_image  img{ 
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+	border: 1px solid #E0E0E0;
+	padding: 5px;
+	margin:4px;
+}
+
+#header_sport_and_exercise {
+	height:90px;
+	display:inline-table;
+
+}
+
+#header_name_sport {
+	width: 200px;
+	height: 45px;
+
+	font-size: 40px;
+}
+
+#header_name_exercise {
+	width: 200px;
+	height: 45px;
+
+	font-size: 30px;
+}
+
+#header_description_exercise {
+
+}
+
+
+/*-------------------post_body------------------*/
 #post_body {
 	text-decoration: none;
 	background:#F0F0F0;
@@ -344,129 +650,6 @@
 	font-size:14px;
 	width: 240px;
 	height:30px;
-}
-
-#post_body a{
-	text-decoration: none;
-	color: black;
-}
-
-#post_header {
-	/*background: red;*/
-	width: 100%;
-	height: 54px; 
-	border-bottom: 1px solid #E0E0E0 ;
-}
-
-#post_header_info {
-	margin: 2px 2px 2px 2px;
-	display: inline-table;
-	/*background: blue;*/
-	float: left;
-	height: 50px;
-}
-
-#post_header_name {
-	margin: 2px 2px 2px 2px;
-}
-
-#post_header_date {
-	margin: 10px 2px 2px 2px;
-	color: gray;
-}
-
-#post_header_close{
-	float: right;
-	margin: 2px 2px 2px 2px;
-}
-
-#post_header_ava {
-	float: left;
-	display: inline-table;
-	margin: 2px 2px 2px 2px;
-	width: 50px;
-	height: 50px;
-	
-}
-
-#post_header_ava img {
-	width: 48px; 
-	height:48px;
-	border-radius: 24px;
-	border: 1px solid #E0E0E0;
-}
-
-#post_body_text {
-	width: 100%;
-	word-wrap: break-word; /* Перенос слов */ 
-	margin: 2px 2px 10px 2px;
-}
-
-#post_body_training {
-	margin: 2px 2px 10px 2px;
-}
-
-#post_body_training table {
-	width: 100%;
-	border-collapse: collapse;
-	margin: auto;
-	border-color: black;
-}
-
-#post_body_img {
-	width:400px;
-	margin: auto;
-	padding: 10px 5px 10px 5px;
-	/*display: inline-table;*/
-}
-
-#post_body_img img{
-	width:400px; 
-}
-
-#post_footer {
-	width: 100%;
-	height: 30px; 
-	border-top: 1px solid #E0E0E0;
-}
-
-#post_footer_icon{
-	display: inline-table;
-	float:right;
-	height:30px;
-	width:100px;
-}
-
-#post_footer_icon img {
-	margin: 2px 2px 2px 2px;
-	width: 20px;
-	height: 20px;
-}
-
-/*training*/
-/*------------td table training------------*/
-.training_done {
-	background-color: rgba(0, 255, 0, 0.3);
-}
-
-.training_sheduled {
-	background-color: rgba(255, 0, 0, 0.3);
-}
-
-.training_missed {
-	background-color: rgba(0, 0, 0, 0.2);
-}
-
-#post_body {
-	text-decoration: none;
-	background:#F0F0F0;
-	width: 780px;
-	margin: 10px 5px 20px 5px;
-	padding: 5px 5px 5px 5px;
-	display: block;
-	float: left;
-	border-radius: 5px;
-	box-shadow: 1px 1px 8px 1px #E0E0E0;
 }
 
 #post_body a{
@@ -630,8 +813,98 @@
 	border: 1px solid #E0E0E0;
 }
 
+/* ---------- LOGIN ---------- */
 
-/*skeleton*/
+#login {
+	color: #606468;
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.5em;
+}
+
+#login a {
+	color: #eee;
+	text-decoration: none;
+}
+
+#login a:hover {
+	text-decoration: underline;
+}
+
+#login p {
+	line-height: 1.5em;
+	text-align: center;
+}
+
+#login_text {
+	font-size: 14pt;
+	width: 100px;
+}
+
+#login_position {
+	width: 280px;
+	margin: 150px auto;
+}
+
+#registration_position {
+	width: 940px;
+	margin: 100px auto;
+}
+
+#registration_block {
+	display: inline-table;
+	margin-left: 20px;
+}
+
+#login form input {
+	height: 40px;
+	outline:none;
+}
+
+#login form select {
+	height: 40px;
+	width: 280px;
+}
+#login form input {
+	border: none;
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 14px;
+	border-radius: 3px;
+}
+
+#login form input[type="text"], input[type="password"], input[type="date"],  input[type="email"], select[type="gender"]{
+	background-color: #3b4148;
+	color: #606468;
+	padding: 0 16px;
+	width: 248px;
+	
+}
+
+#login form input:focus {
+	color:#fff;
+}
+
+#login form input[type="submit"] {
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor:pointer;
+	width: 280px;
+}
+
+#login form input[type="submit"]:hover {
+	background-color: #d44179;
+}
+
+
+
+
+
+
+
+
+
 #header {
 	width: 100%;
 	height:50px;
@@ -642,12 +915,6 @@
 	background: #E8E8E8 ;
 	width: 100%;
 	height:90px;
-}
-
-#menu span{
-	position:relative;
-	float:right;
-	display:inline-block;
 }
 
 #main {
@@ -669,10 +936,15 @@
     width: 100%; 
 	min-width: 800px;
 }
+#user_name_box {
+	float: right;
+	background: red;
+	display: inline-table;
+}
 
 #nav{
 	min-width:800px;
-	position: relative;
+	display: inline-table;
 	height: 80px;
 	margin: auto;
 	width: 800px;
@@ -680,29 +952,44 @@
 	background: #FFF;
 	box-shadow: 0 3px 15px -2px rgba(0,0,0,.1);
 	border: 1px solid rgba(0,0,0,.1);
+
 }
-  #nav ul{
+
+#user_name_box {
+	margin-right: 20px;
+	float: right;
+	padding: 2px 10px;
+	background: #FFF;
+	box-shadow: 0 3px 15px -2px rgba(0,0,0,.1);
+	border-bottom: 1px solid rgba(0,0,0,.1);
+	font-size: 18px;
+
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+
+#nav ul{
+	
+	padding: 0px;
 	width: 100%;
-    list-style: none;
-    position: relative;
-    display: block;
+	list-style: none;
+	position: relative;
+	display: block;
 	margin: auto;
   }
     #nav ul li{
+		
       float: left;
 	  background: #fff;
-      -webkit-transition: all .2s ease-in-out;
-      -moz-transition: all .2s ease-in-out;
-      transition: all .2s ease-in-out;
+
     }
 
     #nav ul li:hover {background: rgba(0,0,0,.15);}
     #nav ul li:hover > ul{display: block;}
     #nav ul li{
       float: left;
-      -webkit-transition: all .2s ease-in-out;
-      -moz-transition: all .2s ease-in-out;
-      transition: all .2s ease-in-out;
+    
     }
       #nav ul li a{
         display: block; 

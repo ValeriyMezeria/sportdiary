@@ -17,14 +17,13 @@ class Model_Main extends Model
 	
 	public function try_registration()
 	{
-		if(!$this->check_name($_POST['first_name']) || !$this->check_name($_POST['last_name']))
-			$result = 'Error in name!';
-		else if (!$this->check_email($_POST['email']))
-			$result = 'Error in e-amil!';
-		else if (!$this->check_password($_POST['password']) || !$this->check_password($_POST['repeat_password']) || $_POST['password'] != $_POST['repeat_password'])
-			$result = 'Error in password!';
-		else if(!$this->check_date($_POST['birth']))
-			$result = 'Error in your birthday date!';
+		
+		extract($_POST, EXTR_OVERWRITE);
+		
+		var_dump($first_name);
+		
+		if ($_POST['password'] != $_POST['repeat_password'])
+			$result = 'Uncorrect repeating password!';
 		else
 		{		
 			$result = '';
@@ -32,14 +31,31 @@ class Model_Main extends Model
 			$connection = $this->connection;
 			$connection->query('SET NAMES utf8;');
 			$query_result = $connection->query('INSERT INTO users (first_name, last_name, email, password, birthday, height, weight, gender) 
-												VALUES(\''.$_POST['first_name'].'\',
-														\''.$_POST['last_name'].'\',
-														\''.$_POST['email'].'\',
-														\''.$_POST['password'].'\',
-														\''.$_POST['birth'].'\',
-														\''.$_POST['height'].'\',
-														\''.$_POST['weight'].'\',
-														\''.$_POST['gender'].'\');');
+												VALUES(\''.$first_name.'\',
+														\''.$last_name.'\',
+														\''.$email.'\',
+														\''.$password.'\',
+														\''.$birth.'\',
+														\''.$height.'\',
+														\''.$weight.'\',
+														\''.$gender.'\');');
+			
+			var_dump('INSERT INTO users (first_name, last_name, email, password, birthday, height, weight, gender) 
+												VALUES(\''.$first_name.'\',
+														\''.$last_name.'\',
+														\''.$email.'\',
+														\''.$password.'\',
+														\''.$birth.'\',
+														\''.$height.'\',
+														\''.$weight.'\',
+														\''.$gender.'\');');
+			
+			$query_result = $connection->query('SELECT id FROM users ORDER by id DESC LIMIT 1;');	
+			$row = $query_result->fetch_assoc();
+			$user_id  = $row['id'];
+														
+			$query_result = $connection->query('INSERT INTO addresses (user_id, country, city, street, number_home, number_apartment)
+												VALUES('.$user_id.', \''.$country.'\', \''.$city.'\', \''.$street.'\', \''.$house.'\', '.((isset($apartment))  ? ($apartment) : 'NULL').');');
 			
 			
 		}

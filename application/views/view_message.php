@@ -14,7 +14,7 @@ echo '<table class="dialogues_table">
 				extract($data[$i], EXTR_OVERWRITE);
 				
 				echo '<tr>
-					<td onclick="return location.href = \'index1.html\'" > 
+					<td onclick="return location.href = \'http://'.$host.'/Message/message_story?companion='.$user_id.'\'" > 
 						<div id="dialog_box" >
 							<div id="found_people_ava">
 								<img src="http://'.$host.'/'.$user_avatar.'">
@@ -46,7 +46,7 @@ echo '<table class="dialogues_table">
 			echo '<tr>
 				<td>
 					<div id="not_found_people">
-						you do not have dialogues
+						You do not have dialogues
 					</div>
 				</td>
 				</tr>

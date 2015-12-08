@@ -11,6 +11,9 @@ echo 	'<html>
 		</head>
 		<body>
 		<div id="menu">
+			<div id="user_name_box">
+			'.$_SESSION['user_first_name'].' '.$_SESSION['user_last_name'].'
+			</div>
 			<div id="nav">
 
 				<ul>
@@ -23,7 +26,6 @@ echo 	'<html>
 					<li><a href = "http://'.$host.'/Main/index?logout=1"> LOG OUT </a></li>
 				</ul>
 			</div>
-			<span>'.$_SESSION['user_first_name'].' '.$_SESSION['user_last_name'].'</span>
 		</div>
 		<div id="main">' ;
 		

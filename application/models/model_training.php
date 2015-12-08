@@ -25,6 +25,8 @@ class Model_Training extends Model
 		
 		while($row = $query_result->fetch_assoc())
 		{
+			
+			
 			$result[$i]['training_id'] = $row['id'];
 			$result[$i]['training_name'] = $row['name'];
 			$result[$i]['training_date'] = $row['date'];
@@ -38,6 +40,7 @@ class Model_Training extends Model
 			$result[$i]['exercises_approach'] = $row['approach'];
 			$result[$i]['exercises_repetition'] = $row['repetition'];
 			$result[$i]['exercises_value'] = $row['value'];
+			$result[$i]['exercises_result'] = $row['result'];
 			$result[$i]['exercises_intensity'] = $row['intensity'];
 			
 			$result[$i]['koe_name'] = $row['name_kind_of_ex'];//koe is "kinds of exercises"
@@ -51,7 +54,7 @@ class Model_Training extends Model
 			$result[$i++]['kos_icon'] = $row['icon'];	
 		}
 		
-		$query_result = $connection->query('SELECT SEC_TO_TIME(sum(TIME_TO_SEC(total_time))) as time, count(id) training_num  FROM training WHERE user_id ='.$user_id.';');
+		$query_result = $connection->query('SELECT SEC_TO_TIME(sum(TIME_TO_SEC(total_time))) as time, count(id) training_num  FROM training WHERE user_id ='.$user_id.' AND status=\'done\';');
 		$row = $query_result->fetch_assoc();
 		
 		$result[$i]['training_num'] = $row['training_num'];
@@ -104,6 +107,23 @@ class Model_Training extends Model
 								VALUES(\''.$approach[$i].'\', \''.$repetition[$i].'\', \''.$value[$i].'\', \''.$result[$i].'\', \''.$intensity[$i].'\',\''.$exercise[$i].'\', \''.$training_id.'\');');
 		}
 		
+	}
+	
+	function add_training_post($training_id)
+	{
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		$connection->query('INSERT INTO posts (user_id, training_id) VALUES('.$_SESSION['user_id'].', '.$training_id.');');
+	}
+	
+	function delete_training($training_id)
+	{
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		$connection->query('DELETE FROM exercises WHERE training_id='.$training_id.';');
+		$connection->query('DELETE FROM training WHERE id='.$training_id.';');
 	}
 	
 }
