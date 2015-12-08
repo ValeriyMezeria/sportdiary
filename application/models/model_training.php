@@ -4,7 +4,7 @@ session_start();
 class Model_Training extends Model
 {
 	
-	public function get_training($user_id)
+	public function get_training($user_id, $status)
 	{	
 		$i = 0;
 		//$user_id = 1;
@@ -19,7 +19,7 @@ class Model_Training extends Model
 											JOIN exercises ON training.id = exercises.training_id 
 											JOIN kinds_of_exercises ON exercises.kind_of_exercise = kinds_of_exercises.id
 											JOIN kinds_of_sport ON kinds_of_exercises.kind_of_sport = kinds_of_sport.id
-											WHERE training.user_id = '.$user_id.';
+											WHERE training.user_id = '.$user_id.' AND training.status = \''.$status.'\';
 											');
 	
 		while($row = $query_result->fetch_assoc())

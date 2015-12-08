@@ -131,9 +131,9 @@ echo '</div>
 					
 					<table class="status_training">
 						<tr>
-							<td class="select_status_training"><a href="index.html?select=missed">Missed</a></td>
-							<td><a href="index.html?select=done">Done</a></td>
-							<td style="border-right: 1px solid white;"><a href="index.html?select=scheduled">Scheduled</a></td>
+							<td class="'.(($options['status'] == 'missed') ? 'select_status_training' : '').'"><a href="http://'.$host.'/Training/training?status=missed">Missed</a></td>
+							<td class="'.(($options['status'] == 'done') ? 'select_status_training' : '').'"><a href="http://'.$host.'/Training/training?status=done">Done</a></td>
+							<td class="'.(($options['status'] == 'sheduled') ? 'select_status_training' : '').'" style="border-right: 1px solid white;"><a href="http://'.$host.'/Training/training?status=sheduled">Scheduled</a></td>
 						</tr>			
 					</table>';
 					
