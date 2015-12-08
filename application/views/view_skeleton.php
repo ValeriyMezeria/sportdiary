@@ -22,7 +22,7 @@ echo 	'<html>
 					<li><a href = "http://'.$host.'/People/people"> People </a></li>
 					<li><a href = "http://'.$host.'/Message/message_list"> Messages </a></li>
 					<li><a href = "#"> Statistica </a></li>
-					<li><a href = "#"> Profile </a></li>
+					<li><a href = "http://'.$host.'/Profile/profile"> Profile </a></li>
 					<li><a href = "http://'.$host.'/Main/index?logout=1"> LOG OUT </a></li>
 				</ul>
 			</div>

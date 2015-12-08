@@ -25,17 +25,17 @@ function days_in_month($cur)
 	}
 }
 
-function training_status($data, $date)
+function status($data, $date)
 {
 	
 	for($i = 0; $i < count($data) - 1; $i++)
 	{
-		if($data[$i]['training_date'] == $date)
-			if($data[$i]['training_status'] == 'done')
+		if($data[$i]['date'] == $date)
+			if($data[$i]['status'] == 'done')
 				return 'training_done';
-			else if ($data[$i]['training_status'] == 'missed')
+			else if ($data[$i]['status'] == 'missed')
 				return 'training_missed';
-			else if ($data[$i]['training_status'] == 'sheduled')
+			else if ($data[$i]['status'] == 'sheduled')
 				return 'training_sheduled';
 	}
 	
@@ -43,19 +43,21 @@ function training_status($data, $date)
 }
 
 
-
 echo '<div id="info_training">
-Number of completed training in month:</h3> <br> <text>'.$data[count($data) - 1]['training_num'].'</text> <br>
-Total time on trainings in month:<br> <text>'.$data[count($data) - 1]['training_time'].'</text>
+Number of completed training in month:</h3> <br> <text>'.$data[count($data) - 1]['num'].'</text> <br>
+Total time on trainings in month:<br> <text>'.$data[count($data) - 1]['time'].'</text>
 <div id="info_kind_of_sports">
-Kinds of sports:<br>
-<img src="images/KindsOfSports1.png">
-<img src="images/KindsOfSports2.png">
-<img src="images/KindsOfSports3.png">
-<img src="images/KindsOfSports1.png">
-<img src="images/KindsOfSports2.png">
+Kinds of sports:<br>';
 
-</div>
+extract($data[count($data) - 1], EXTR_OVERWRITE);
+
+if(isset($icons))
+	for($i = 0; $i < count($icons); $i++)
+		echo'<img src="http://'.$host.'/images/'.$icons[$i].'">';
+else
+	echo 'No sports!';
+
+echo '</div>
 </div>
 
 
@@ -117,7 +119,7 @@ Kinds of sports:<br>
 						$cur_month_num = date('m');
 					}*/
 					
-					echo '<td class="'.training_status($data, date('Y-'.$cur_month_num.'-'.(($i < 10) ? ('0'.$i) : $i).'')).'"><a href="#">'.$i.'</a></td>';
+					echo '<td class="'.status($data, date('Y-'.$cur_month_num.'-'.(($i < 10) ? ('0'.$i) : $i).'')).'"><a href="#">'.$i.'</a></td>';
 					
 					if($count % 7 == 0)
 						echo '</tr>';
@@ -125,7 +127,15 @@ Kinds of sports:<br>
 				
 			echo '	</table>
 					<a href="http://'.$host.'/Training/add_training"><div id="button_add_training">add training</div></a>
-					</div>';
+					</div>
+					
+					<table class="status_training">
+						<tr>
+							<td class="select_status_training"><a href="index.html?select=missed">Missed</a></td>
+							<td><a href="index.html?select=done">Done</a></td>
+							<td style="border-right: 1px solid white;"><a href="index.html?select=scheduled">Scheduled</a></td>
+						</tr>			
+					</table>';
 					
 
 for($i = 0; $i < count($data) - 1; $i++)
@@ -137,24 +147,24 @@ for($i = 0; $i < count($data) - 1; $i++)
 			<div id="post_header">
 				
 				<div id="post_header_info">
-					<div id="training_name">
-						<a href="#">'.$training_name.'</a>
+					<div id="name">
+						<a href="#">'.$name.'</a>
 					</div>
 					
-					<div id="training_date">
-						'.$training_date.'
+					<div id="date">
+						'.$date.'
 					</div>
 				</div>
 				<div id="post_header_close">
-						<a href="http://'.$host.'/Training/training?delete_training='.$training_id.'">delete</a>
+						<a href="http://'.$host.'/Training/training?delete_training='.$id.'">delete</a>
 				</div>
 			</div>
 			
 			<div id="post_body_training">
 				
-				<b>Total time:</b> '.$training_time.'<br>
-				<b>Feeling:</b> '.$training_feeling.'<br>
-				<b>Calories:</b> '.$training_calories.' <br>
+				<b>Total time:</b> '.$time.'<br>
+				<b>Feeling:</b> '.$feeling.'<br>
+				<b>Calories:</b> '.$calories.' <br>
 				<table border="1">
 					<tr>
 						<td><b>Sport</b></td>
@@ -174,25 +184,25 @@ for($i = 0; $i < count($data) - 1; $i++)
 						echo '<tr>
 							<td>'.$kos_name.'</td>
 							<td>'.$koe_name.'</td>
-							<td>'.$exercises_approach.'</td>
-							<td>'.$exercises_repetition.'</td>
-							<td>'.(isset($koe_mov) ? ($exercises_value.' '.$koe_mov) : '-').'</td>
-							<td>'.(isset($koe_mor) ? ($exercises_result.' '.$koe_mor) : '-').'</td>
-							<td>'.$exercises_intensity.'</td>
+							<td>'.$approach.'</td>
+							<td>'.$repetition.'</td>
+							<td>'.(isset($koe_mov) ? ($value.' '.$koe_mov) : '-').'</td>
+							<td>'.(isset($koe_mor) ? ($result.' '.$koe_mor) : '-').'</td>
+							<td>'.$intensity.'</td>
 						</tr>';
 					
-						if($data[$i]['training_id'] != $data[$i + 1]['training_id'])
+						if($data[$i]['id'] != $data[$i + 1]['id'])
 							break;
 					}
 				
 				
 				echo '</table>
-				<b>Description:</b> '.$training_description.'
+				<b>Description:</b> '.$description.'
 			</div>
 			
 			<div id="post_footer">
 				<div id="post_footer_icon">
-					<a href="http://'.$host.'/Training/training?add_training_post='.$training_id.'"><img src="http://'.$host.'/images/Share.png"></a> 	<text class="isPressed"> share </text>
+					<a href="http://'.$host.'/Training/training?add_post='.$id.'"><img src="http://'.$host.'/images/Share.png"></a> 	<text class="isPressed"> share </text>
 				</div>
 			</div>
 		</div>
