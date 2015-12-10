@@ -42,4 +42,9 @@ class Controller_Feed extends Controller
 		
 		$this->view->generate('view_feed.php', 'view_skeleton.php', $data, $auth_opt);
 	}
+	
+	function action_404()
+	{
+		$this->view->generate('view_404.php', 'view_skeleton.php', $data, $auth_opt);
+	}
 }

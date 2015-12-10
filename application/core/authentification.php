@@ -11,7 +11,7 @@ class Authentification
 	
 	
 	
-	private function check()
+	public function check()
 	{
 		if(isset($_SESSION['user_email']) && !empty($_SESSION['user_email']) && time() - $_SESSION['last_active'] < $this->SESSION_VALID_TIME)
 		{
