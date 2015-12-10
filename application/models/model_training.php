@@ -141,4 +141,11 @@ class Model_Training extends Model
 			$connection->query('INSERT INTO kinds_of_exercises (name, description, measure_of_value, measure_of_result, kind_of_sport) VALUES(\''.$ex_name.'\', \''.$description.'\', \''.$mov.'\', \''.$mor.'\', \''.$kos.'\');');
 	}
 	
+	function done_training($training_id)
+	{
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		$connection->query('UPDATE training SET status = \'done\' WHERE id = '.$training_id.';');
+	}
 }

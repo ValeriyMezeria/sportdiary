@@ -24,6 +24,9 @@ class Controller_Training extends Controller
 			$model->delete_training($_GET['delete_training']);
 		}
 		
+		if(isset($_GET['perform']))
+			$model->done_training($_GET['perform']);
+		
 		$options['status'] = $_GET['status'];
 		
 		if($_GET['status'] == 'done')

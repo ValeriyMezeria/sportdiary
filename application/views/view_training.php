@@ -156,8 +156,12 @@ for($i = 0; $i < count($data) - 1; $i++)
 					</div>
 				</div>
 				<div id="post_header_close">
-						<a href="http://'.$host.'/Training/training?delete_training='.$id.'">delete</a>
-				</div>
+						<a href="http://'.$host.'/Training/training?delete_training='.$id.'">delete</a>';
+						
+						if($status == 'sheduled' && $date == date('Y-m-d'))
+							echo '<br><br><a href="http://'.$host.'/Training/training?perform='.$id.'">perform</a>';
+						
+				echo '</div>
 			</div>
 			
 			<div id="post_body_training">
@@ -202,7 +206,7 @@ for($i = 0; $i < count($data) - 1; $i++)
 			
 			<div id="post_footer">
 				<div id="post_footer_icon">
-					<a href="http://'.$host.'/Training/training?add_post='.$id.'"><img src="http://'.$host.'/images/Share.png"></a> 	<text class="isPressed"> share </text>
+					<a href="http://'.$host.'/Training/training?add_training_post='.$id.'"><img src="http://'.$host.'/images/Share.png"></a> 	<text class="isPressed"> share </text>
 				</div>
 			</div>
 		</div>
