@@ -18,12 +18,13 @@ class Controller_People extends Controller
 						
 			$data = $model->search_people();
 			$options['user_id'] = $_SESSION['user_id'];
-			
+			$options['subscribes'] = $model->get_subscribes();
+
 			$this->view->generate('view_people.php', 'view_skeleton.php', $data, $auth_opt, $options);
 		}
 		else
 		{
-			$this->view->generate('view_people.php', 'view_skeleton.php', $data, $auth_opt);
+			$this->view->generate('view_people.php', 'view_skeleton.php', $data, $auth_opt, $options);
 		}
 		
 		

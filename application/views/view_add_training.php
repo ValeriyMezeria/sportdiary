@@ -45,8 +45,6 @@ echo '<div id="add_training">
 				</tr>
 			</table>
 
-Format: YYYY-MM-DD
-
 
 			<table border="1" class="table_exercise" id="table_exercise">
 				<tr>
@@ -60,12 +58,13 @@ Format: YYYY-MM-DD
 				</tr>
 				<tr id="row">
 					<td><select type="status" name="exercise[]" >';
-								
+					
 					for($i = 0; $i < count($data); $i++)
 					{
 						extract($data[$i], EXTR_OVERWRITE);
 						echo '<option value="'.$id.'"> '.$name.' </option>';
-					}						
+					}
+											
 								
 					echo '</select></td></td>
 					<td><input type="text" name="approach[]" ></td>
@@ -83,6 +82,8 @@ Format: YYYY-MM-DD
 					<td onclick="removeRow(this)"><b>-</b></td>
 				</tr>
 			</table><br>
+		
+			<a href="http://'.$host.'/Training/add_exercise">Do you have some new exercise? Add it.</a><br>
 		
 			<b>Description:</b> <br>
 			<textarea rows="6" value="" name="description" id="description" placeholder=""></textarea><br>

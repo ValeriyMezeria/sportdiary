@@ -47,8 +47,9 @@ class Controller_Training extends Controller
 		$auth_opt = $authentification->get_auth_opt();
 		$model = new Model_Training();
 		$data = $model->get_all_exercises();
+		$options['kos'] = $model->get_all_sports();
 		
-		//var_dump($data);
+		//var_dump($options);
 		if($_GET['recieve'] == 1)
 		{
 			
@@ -57,10 +58,32 @@ class Controller_Training extends Controller
 			$options['result'] = 'Training sucessfully added!';
 			$this->view->generate('view_add_training.php', 'view_skeleton.php', $data, $auth_opt, $options);
 		}
+		else if($_GET['recieve'] == 2)
+		{
+			$model->add_exercise();
+			
+			$options['result'] = 'Exercise sucessfully added!';
+			$this->view->generate('view_add_training.php', 'view_skeleton.php', $data, $auth_opt, $options);
+		}
 		else
 		{
-			$this->view->generate('view_add_training.php', 'view_skeleton.php', $data, $auth_opt);
+			$this->view->generate('view_add_training.php', 'view_skeleton.php', $data, $auth_opt, $options);
 		}
 		
-	}	
+	}
+
+	function action_add_exercise()
+	{
+		$authentification = new Authentification();
+		$model = new Model_Training();
+		
+		$data = $model->get_all_sports();
+		
+		if($_GET['recieve'] == 1)
+		{
+			$model->add_exercise();
+			$options['result'] = 'Exercise added!';		}
+		
+		$this->view->generate('view_add_exercise.php', 'view_skeleton.php', $data, $auth_opt, $options);
+	}
 }

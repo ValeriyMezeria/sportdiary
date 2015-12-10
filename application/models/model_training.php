@@ -7,7 +7,6 @@ class Model_Training extends Model
 	public function get_training($user_id, $status)
 	{	
 		$i = 0;
-		//$user_id = 1;
 		
 		$connection = $this->connection;
 		$connection->query('SET NAMES utf8;');
@@ -112,6 +111,34 @@ class Model_Training extends Model
 		
 		$connection->query('DELETE FROM exercises WHERE training_id='.$training_id.';');
 		$connection->query('DELETE FROM training WHERE id='.$training_id.';');
+	}
+	
+	function get_all_sports()
+	{
+		$i = 0;
+		
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		$query_result = $connection->query('SELECT id, name FROM kinds_of_sport;');
+		
+		while($row = $query_result->fetch_assoc())
+		{
+			$result[$i++] = $row;
+		}
+		
+		return $result;
+	}
+	
+	function add_exercise()
+	{
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		extract($_POST, EXTR_OVERWRITE);
+		
+		if(!empty($kos) && !empty($ex_name) && !empty($description) && !empty($mov) && !empty($mor))
+			$connection->query('INSERT INTO kinds_of_exercises (name, description, measure_of_value, measure_of_result, kind_of_sport) VALUES(\''.$ex_name.'\', \''.$description.'\', \''.$mov.'\', \''.$mor.'\', \''.$kos.'\');');
 	}
 	
 }

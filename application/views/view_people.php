@@ -3,6 +3,20 @@ session_start();
 
 $host = $_SERVER['HTTP_HOST'];
 
+function is_subscribe($id, $options)
+{
+	extract($options, EXTR_OVERWRITE);
+	
+	for($i = 0; $i < count($subscribes); $i++)
+	{
+		if($id == $subscribes[$i]['user_id'] || $id == $_SESSION['user_id'])
+			return true;
+	
+	}
+	
+	return false;
+}
+
 	echo '<script>
 			function openbox(id){
 			  display = document.getElementById(id).style.display;
@@ -41,11 +55,17 @@ $host = $_SERVER['HTTP_HOST'];
 								'.$user_country.', '.$user_city.'
 							</div>
 						</div>
-						<div id="found_people_add">
-							<input type="submit" value="Add to friends" id="submit_add_people">
-						</div>
+						';
 						
-					</div>';
+						if(!is_subscribe($id, $options))
+						{
+							echo '<div id="found_people_add">
+									<a href="http://'.$host.'/Profile/profile?user_id='.$id.'&subscribe='.$id.'"><div  id="submit_add_people"> Subscribe </div></a>
+								</div>';
+						}
+						
+					echo '
+							</div>';
 				}
 			}
 			else
