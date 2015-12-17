@@ -32,7 +32,7 @@ echo 	'<html>
 		include 'application/views/'.$content_view;
 		
 echo '</div>	
-<div id="footer"> footer </div>
+<div id="footer"> Mezerya Valeriy & Petrov Anton Inc. Copyright 2015</div>
 		</body>
 		</html>
 				';

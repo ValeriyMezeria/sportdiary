@@ -4,7 +4,7 @@ session_start();
 $host = $_SERVER['HTTP_HOST'];
 
 echo '<div id="statistica_menu">
-<a href="http://'.$host.'/Statistica/sport">Sport</a> | <a href="http://'.$host.'/Statistica/exercise">Exercise</a> | <a href="http://'.$host.'/Statistica/people">People</a>
+<a href="http://'.$host.'/Statistica/sport">Sport</a> | <a href="http://'.$host.'/Statistica/exercise">Exercise</a> | <a href="http://'.$host.'/Statistica/people">People</a> | <a href="http://'.$host.'/Statistica/program">Program</a>
 </div>
 	<form id="main_form" action="http://'.$host.'/Statistica/people?recieve=1" method="post">
 		<div id="search_box"> 
@@ -126,7 +126,7 @@ echo '<div id="statistica_menu">
 			</select></p>
 			
 			<p>
-				<input '.(($_POST['only_subscribes'] == 1) ? 'checked' : '' ).' type="checkbox" name="only_subscribes" value="">
+				<input '.(($_POST['only_subscribes'] == 1) ? 'checked' : '' ).' type="checkbox" name="only_subscribes" value="1">
 				Only of my friends
 			</p>
 			

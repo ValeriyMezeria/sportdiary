@@ -2,6 +2,10 @@ body {
 	margin: 0px;
 }
 
+a {
+	text-decoration: none;
+}
+
 .isPressed{
 	color: black;
 	font-weight: 800;
@@ -14,6 +18,7 @@ body {
 /*------------td table training------------*/
 .training_done {
 	background-color: rgba(0, 255, 0, 0.3);
+	text-align: center;
 }
 
 .training_sheduled {
@@ -22,7 +27,7 @@ body {
 
 .training_missed {
 	background-color: rgba(255, 0, 0, 0.2);
-	
+	text-align: center;
 }
 
 /*----------------------statistica-----------------------*/
@@ -52,7 +57,7 @@ body {
 
 #statistica_menu {
 	padding: 2px 10px;
-	width: 195px;
+	width: 280px;
 	background: #E8E8E8;
 	border: 1px solid #E8E8E8;
 	border-bottom-left-radius: 10px;
@@ -344,9 +349,6 @@ body {
 	margin: 5px 0px;
 }
 
-#button_add_training a {
-	text-decoration: none;
-}
 
 
 
@@ -369,6 +371,28 @@ body {
 	border-radius: 12px;
 	background: #F2F2F2;
 	font-size: 14px;
+    text-decoration: none;
+}
+
+#box_start_program {
+	text-align: center;
+	border: 1px solid #A9D0F5;
+	color: #2E9AFE;
+	border-radius: 12px;
+	background: #F2F2F2;
+	font-size: 18px;
+	padding: 1px 5px;
+    text-decoration: none;
+}
+
+#box_current_program {
+	text-align: center;
+	border: 1px solid #00CC33;
+	color: #00CC33;
+	border-radius: 12px;
+	background: #F2F2F2;
+	font-size: 18px;
+	padding: 1px 5px;
     text-decoration: none;
 }
 
@@ -498,6 +522,16 @@ body {
 	margin: 2px 2px 10px 2px;
 }
 
+#add_training form select[type="intensity"]{
+	background-color: white;
+	color: black;
+	margin: 2px 2px 2px 2px;
+	height: 25px;
+	width: 70px;
+	border: 1px solid #E0E0E0;
+	border-color: white white #E0E0E0 white;
+}
+
 #add_training form input[type="date"], input[type="text"], select[type="feeling"], select[type="status"], input[type="time"]{
 	background-color: white;
 	color: black;
@@ -555,7 +589,7 @@ body {
 }
 
 .table_exercise  input[type="text"] {
-	width: 150px;
+	width: 100px;
 }
 
 .table_exercise  textarea {
@@ -715,6 +749,28 @@ body {
 }
 
 #post_header_close{
+	text-align: center;
+	border: 1px solid #F5A9A9;
+	color: #F78181;
+	border-radius: 12px;
+	background: #F2F2F2;
+	font-size: 18px;
+	padding: 1px 5px;
+    text-decoration: none;
+	float: right;
+	margin: 2px 2px 2px 2px;
+}
+
+
+#post_header_done{
+	text-align: center;
+	border: 1px solid #00CC33;
+	color: #00CC33;
+	border-radius: 12px;
+	background: #F2F2F2;
+	font-size: 18px;
+	padding: 1px 5px;
+    text-decoration: none;
 	float: right;
 	margin: 2px 2px 2px 2px;
 }
@@ -738,11 +794,11 @@ body {
 #post_body_text {
 	width: 100%;
 	word-wrap: break-word; /* Перенос слов */ 
-	margin: 2px 2px 10px 2px;
+	margin: 5px 2px 10px 2px;
 }
 
 #post_body_training {
-	margin: 2px 2px 10px 2px;
+	margin: 5px 2px 10px 2px;
 }
 
 #post_body_training table {
@@ -829,9 +885,18 @@ body {
 }
 
 #info_training text{
-	font-size: 27pt;
+	font-size: 18pt;
 	padding-left: 20px;
 	color: black;
+}
+
+#info_training a{
+	font-size: 10pt;
+	color: gray;
+}
+
+#info_training a:hover{
+	color: red;
 }
 
 #info_kind_of_sports {

@@ -10,6 +10,13 @@ class Model_Training extends Model
 		
 		$connection = $this->connection;
 		$connection->query('SET NAMES utf8;');
+		
+		
+		
+		$tmp = $this->get_data_from_table('training', 'id', 'date = '.date('Y').'-'.date('m').'-'.(date('d') - 1).'');
+		if(isset($tmp))
+			$this->update_by_id($tmp[0]['id'], 'training', 'ststus', 'missed');
+		
 		$query_result = $connection->query('SELECT  training.id as id, training.name as name, date, total_time, calories, feeling, training.description as description, status, program_id, 
 													approach, repetition, value, result, intensity, 
 													kinds_of_exercises.name as koe_name, kinds_of_exercises.description as koe_description, kinds_of_exercises.measure_of_value as koe_mov, kinds_of_exercises.measure_of_result as koe_mor, 
@@ -18,7 +25,8 @@ class Model_Training extends Model
 											JOIN exercises ON training.id = exercises.training_id 
 											JOIN kinds_of_exercises ON exercises.kind_of_exercise = kinds_of_exercises.id
 											JOIN kinds_of_sport ON kinds_of_exercises.kind_of_sport = kinds_of_sport.id
-											WHERE training.user_id = '.$user_id.' AND training.status = \''.$status.'\';
+											WHERE training.user_id = '.$user_id.' AND training.status = \''.$status.'\' 
+											ORDER BY training.date DESC;
 											');
 	
 		while($row = $query_result->fetch_assoc())
@@ -147,5 +155,45 @@ class Model_Training extends Model
 		$connection->query('SET NAMES utf8;');
 		
 		$connection->query('UPDATE training SET status = \'done\' WHERE id = '.$training_id.';');
+	}
+	
+	function get_cur_program()
+	{
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		$query_result = $connection->query('SELECT programs.id as id, templates_programs.name as name FROM programs 
+							JOIN templates_programs ON templates_programs.id = programs.template_program_id
+								WHERE programs.user_id = '.$_SESSION['user_id'].' AND programs.is_finish = 0;');
+
+								
+		while($row = $query_result->fetch_assoc())
+		{
+			$result = $row;
+		}
+		
+		return $result;
+	}
+	
+	function delete_program($program_id)
+	{
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		//$connection->query('SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;');
+		
+		$connection->query('	START TRANSACTION;');
+			$connection->query('DELETE FROM exercises WHERE exercises.training_id IN (SELECT training.id 
+											  FROM training 
+											  WHERE training.program_id = '.$program_id.' AND training.user_id = '.$_SESSION['user_id'].' AND training.status = \'sheduled\');');
+								 
+			$connection->query('					DELETE FROM training WHERE training.program_id = '.$program_id.' AND training.user_id = '.$_SESSION['user_id'].' AND training.status = \'sheduled\';');
+
+			$connection->query('					DELETE FROM programs WHERE programs.user_id = '.$_SESSION['user_id'].' AND programs.is_finish = 0;');
+
+			$connection->query('				COMMIT;');
+		
+
+		
 	}
 }

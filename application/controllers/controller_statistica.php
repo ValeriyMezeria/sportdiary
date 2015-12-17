@@ -56,4 +56,33 @@ class Controller_Statistica extends Controller
 		
 		$this->view->generate('view_statistica_people.php', 'view_skeleton.php', $data, $auth_opt, $options);
 	}
+	
+	function action_program()
+	{
+		$authentification = new Authentification();
+		$model = new Model_Statistica();
+		
+		if($_GET['recieve'] == 1)
+		{
+			$data = $model->get_program_statistic();
+			$options['has_program'] = $model->has_program();
+		}
+		
+		
+		
+		$this->view->generate('view_statistica_program.php', 'view_skeleton.php', $data, $auth_opt, $options);
+	}
+	
+	function action_apply_program()
+	{
+		$authentification = new Authentification();
+		$model = new Model_Statistica();
+		
+		if(isset($_GET['program_id']))
+		{
+			$model->apply_program($_GET['program_id']);
+		}
+		
+		echo '<script type="text/javascript">location.href = "http://'.$host.'/Training/training";</script>';
+	}
 }

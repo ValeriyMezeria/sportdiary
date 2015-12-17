@@ -177,4 +177,81 @@ class Model_Statistica extends Model
 		
 		return $result;
 	}
+	
+	function get_program_statistic()
+	{
+		$i = 0;
+		
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		extract($_POST, EXTR_OVERWRITE);
+		
+		
+		$query_result = $connection->query('SELECT count(programs.user_id) AS count_people, users.id as id, templates_programs.name as name, templates_programs.id as t_prog_id, templates_programs.description as description, users.first_name as first_name, users.last_name as last_name
+											FROM (programs RIGHT JOIN templates_programs ON templates_programs.id = programs.template_program_id) 
+											JOIN users ON users.id = templates_programs.author_id
+											WHERE programs.is_finish = 1 
+														'.((!empty($first_name)) ? 'AND (first_name LIKE("%'.$first_name.'%") OR first_name LIKE("%'.$first_name.'%"))' : '').'
+														AND programs.user_id IN (SELECT users.id 
+																							FROM users 
+																							WHERE '.(($gender != 2) ? 'users.gender = '.$gender.' AND ' : '').' 
+																									'.(!empty($age_min) ? 'age(users.id) >= '.$age_min.' AND ' : '').'
+																									'.(!empty($age_max) ? 'age(users.id) <= '.$age_max.' AND ' : '').'
+																											users.id IN (SELECT user_id 
+																															FROM followers 
+																															'.(($only_subscribes == 1) ? 'WHERE follower_id = '.$_SESSION['user_id'].'))' : '))').'
+											GROUP BY templates_programs.name
+											UNION 
+											SELECT 0 , users.id as id, templates_programs.name as name, templates_programs.id as t_prog_id, templates_programs.description as description, users.first_name as first_name, users.last_name as last_name 
+											FROM templates_programs JOIN users ON users.id = templates_programs.author_id
+											WHERE'.((!empty($first_name)) ? '(first_name LIKE("%'.$first_name.'%") OR first_name LIKE("%'.$first_name.'%")) AND' : '').'
+																templates_programs.id NOT IN (SELECT templates_programs.id 
+																FROM programs RIGHT JOIN templates_programs ON templates_programs.id = programs.template_program_id
+																				WHERE programs.is_finish = 1 
+																					AND programs.user_id IN (SELECT users.id 
+																											FROM users 
+																											WHERE '.(($gender != 2) ? 'users.gender = '.$gender.' AND ' : '').' 
+																													'.(!empty($age_min) ? 'age(users.id) >= '.$age_min.' AND ' : '').'
+																													'.(!empty($age_max) ? 'age(users.id) <= '.$age_max.' AND ' : '').' 
+																															users.id IN (SELECT user_id 
+																																			FROM followers 	
+																																			'.(($only_subscribes == 1) ? 'WHERE follower_id = '.$_SESSION['user_id'].')))' : ')))').'
+											ORDER BY count_people DESC;');
+		
+	
+		
+		while($row = $query_result->fetch_assoc())
+		{
+			$result[$i++] = $row;
+		}
+
+		
+		return $result;
+		
+	}
+	
+	function apply_program($t_prog_id)
+	{
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		$query_result = $connection->query('CALL apply_program('.$_SESSION['user_id'].', '.$t_prog_id.')');
+	}
+	
+	function has_program()
+	{
+		$connection = $this->connection;
+		$connection->query('SET NAMES utf8;');
+		
+		$query_result = $connection->query('SELECT * FROM programs WHERE user_id = '.$_SESSION['user_id'].' AND is_finish = 0;');
+		
+		
+		while($row = $query_result->fetch_assoc())
+		{
+			return true;
+		}
+		
+		return false;
+	}
 }

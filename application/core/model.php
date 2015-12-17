@@ -7,13 +7,47 @@ class Model
 	
 	function __construct()
 	{
-		$this->connection = new mysqli('sql4.freemysqlhosting.net', 'sql497000', 'bGNjUbh2SS', 'sql497000');
+		$this->connection = new mysqli('localhost', 'root', 'valera_1996', 'sportdiary');
+		//$this->connection = new mysqli('sql4.freemysqlhosting.net', 'sql497000', 'bGNjUbh2SS', 'sql497000');
 	}
 	
 	function get_connection()
 	{
 		return $this->connection;
 	}
+	
+	//methods for simply database queries
+	
+	protected function get_data_from_table($table_name, $list_of_fields, $conditions = null,$limit = null)
+	{
+		$i = 0;
+		$this->connection->query('SET NAMES utf8;');
+		var_dump('');
+		$query_result = $this->connection->query('SELECT '.$list_of_fields.' 
+													FROM '.$table_name.' 
+													'.((isset($conditions)) ? 'WHERE '.$conditions.'' : '').' 
+													'.((isset($limit)) ? 'LIMIT '.$limit.'' : '').';');
+		
+		while($row = $query_result->fetch_assoc())
+			$result[$i++] = $row;
+		
+		
+		return $result;
+	}
+	
+	protected function update_by_id($id, $table_name, $field_name, $new_value)
+	{
+		$this->connection->query('SET NAMES utf8;');
+		
+		$query_result = $this->connection->query('UPDATE '.$table_name.' 
+													SET '.$field_name.' = \''.$new_value.'\' 
+													WHERE id = '.$id.'');
+													
+		return true;
+	}
+	
+	
+	
 	
 	function check_name($name)
 	{

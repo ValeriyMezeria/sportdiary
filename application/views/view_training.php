@@ -45,8 +45,13 @@ function status($data, $date)
 
 echo '<div id="info_training">
 Number of completed training in month:</h3> <br> <text>'.$data[count($data) - 1]['num'].'</text> <br>
-Total time on trainings in month:<br> <text>'.$data[count($data) - 1]['time'].'</text>
-<div id="info_kind_of_sports">
+Total time on trainings in month:<br> <text>'.$data[count($data) - 1]['time'].'</text>';
+if(isset($options['cur_program']))
+	echo '<br>Your current program:</h3> <br> <text>'.$options['cur_program']['name'].'</text> <a href="http://'.$host.'/Training/training?delete_program='.$options['cur_program']['id'].'"> delete</a><br>';
+else
+	echo '<br>Your current program:</h3> <br> <text>none</text> <a href="http://'.$host.'/Statistica/program">You have no current program. Do you want to find program?</a><br>';
+
+echo '<div id="info_kind_of_sports">
 Kinds of sports:<br>';
 
 extract($data[count($data) - 1], EXTR_OVERWRITE);
@@ -155,13 +160,23 @@ for($i = 0; $i < count($data) - 1; $i++)
 						'.$date.'
 					</div>
 				</div>
-				<div id="post_header_close">
-						<a href="http://'.$host.'/Training/training?delete_training='.$id.'">delete</a>';
-						
-						if($status == 'sheduled' && $date == date('Y-m-d'))
-							echo '<br><br><a href="http://'.$host.'/Training/training?perform='.$id.'">perform</a>';
-						
-				echo '</div>
+				
+				<a href="http://'.$host.'/Training/training?delete_training='.$id.'">
+					<div id="post_header_close">
+						delete
+					</div>
+				</a>';
+				
+				if($status == 'sheduled' && $date == date('Y-m-d')) {
+					echo '
+					<a href="http://'.$host.'/Training/training?perform='.$id.'">
+						<div id="post_header_done">
+								perform
+						</div>
+					</a>
+					';
+				}	
+				echo '
 			</div>
 			
 			<div id="post_body_training">
@@ -202,13 +217,15 @@ for($i = 0; $i < count($data) - 1; $i++)
 				
 				echo '</table>
 				<b>Description:</b> '.$description.'
-			</div>
+			</div>';
 			
-			<div id="post_footer">
-				<div id="post_footer_icon">
-					<a href="http://'.$host.'/Training/training?add_training_post='.$id.'"><img src="http://'.$host.'/images/Share.png"></a> 	<text class="isPressed"> share </text>
-				</div>
-			</div>
-		</div>
-			';
+			if($options['status'] == 'done'){
+				echo '<div id="post_footer">
+						<div id="post_footer_icon">
+							<a href="http://'.$host.'/Training/training?add_training_post='.$id.'"><img src="http://'.$host.'/images/Share.png"></a> 	<text class="isPressed"> share </text>
+						</div>
+					</div>';
+			}
+			
+			echo '</div>';
 }

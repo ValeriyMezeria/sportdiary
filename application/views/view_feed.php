@@ -20,7 +20,7 @@ $host = $_SERVER['HTTP_HOST'];
 	<div id="post_body">
 		<form  enctype="multipart/form-data" action="http://'.$host.'/Feed/feed?recieve_post=1" method="post">
 			<textarea name="text" placeholder="What`s new?"></textarea><br>
-			<input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+			<input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
 			<input name="userfile" type="file" >
 			<input type="submit" value="Send" >
 		</form>
@@ -50,9 +50,11 @@ $host = $_SERVER['HTTP_HOST'];
 			</div>';
 			
 			if($_SESSION['user_first_name'] == $first_name)
-			echo '<div id="post_header_close">
-					<a href="http://'.$host.'/Feed/feed?delete='.$id.'">delete</a>
-			</div>';
+			echo '<a href="http://'.$host.'/Feed/feed?delete='.$id.'">
+						<div id="post_header_close">
+							delete
+						</div>
+					</a>';
 			
 			echo '</div>';
 			

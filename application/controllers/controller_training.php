@@ -24,22 +24,27 @@ class Controller_Training extends Controller
 			$model->delete_training($_GET['delete_training']);
 		}
 		
+		if(isset($_GET['delete_program']))
+		{
+			$model->delete_program($_GET['delete_program']);
+		}
+		
 		if(isset($_GET['perform']))
 			$model->done_training($_GET['perform']);
 		
 		$options['status'] = $_GET['status'];
 		
-		if($_GET['status'] == 'done')
-			$data = $model->get_training($auth_opt['user_id'], 'done');
+		if($_GET['status'] == 'missed')
+			$data = $model->get_training($auth_opt['user_id'], 'missed');
 		else if ($_GET['status'] == 'sheduled')
 			$data = $model->get_training($auth_opt['user_id'], 'sheduled');
 		else
 		{
-			$data = $model->get_training($auth_opt['user_id'], 'missed');
-			$options['status'] = 'missed';
+			$data = $model->get_training($auth_opt['user_id'], 'done');
+			$options['status'] = 'done';
 		}
 		
-		
+		$options['cur_program'] = $model->get_cur_program();
 		
 		$this->view->generate('view_training.php', 'view_skeleton.php', $data, $auth_opt, $options);
 	}

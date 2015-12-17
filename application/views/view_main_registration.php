@@ -27,7 +27,7 @@ $host = $_SERVER['HTTP_HOST'];
 			<div id="registration_block">
 				<p><div id="login_text">Country</div> 	<input pattern="^[a-zA-ZА-Яа-яЁё\s]+$" name="country" type="text" value="" placeholder="Ukraine"></p> 
 				<p><div id="login_text">City</div> 		<input pattern="^[a-zA-ZА-Яа-яЁё\s]+$" name="city" type="text" value="" placeholder="Kyiv"></p>
-				<p><div id="login_text">Street</div> 	<input pattern="^[a-zA-ZА-Яа-яЁё\s]+$" name="street" value="" placeholder="пр-т Победы"></p>
+				<p><div id="login_text">Street</div> 	<input pattern="^[a-zA-ZА-Яа-яЁё\s]+$" name="street" type="text" value="" placeholder="пр-т Победы"></p>
 				<p><div id="login_text">House</div> 	<input pattern="^[0-9]+$" type="text" name="house" value="" placeholder="10"></p>
 				<p><div id="login_text">Apartment</div> <input pattern="^[0-9]+$" type="text" name="apartment" value="" placeholder="13"></p>
 			</div>

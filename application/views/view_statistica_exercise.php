@@ -5,7 +5,7 @@ $host = $_SERVER['HTTP_HOST'];
 
 
 echo '<div id="statistica_menu">
-<a href="http://'.$host.'/Statistica/sport">Sport</a> | <a href="http://'.$host.'/Statistica/exercise">Exercise</a> | <a href="http://'.$host.'/Statistica/people">People</a>
+<a href="http://'.$host.'/Statistica/sport">Sport</a> | <a href="http://'.$host.'/Statistica/exercise">Exercise</a> | <a href="http://'.$host.'/Statistica/people">People</a> | <a href="http://'.$host.'/Statistica/program">Program</a>
 </div>
 	<form action="http://'.$host.'/Statistica/exercise?recieve=1" method="post">
 		<div id="search_box"> 

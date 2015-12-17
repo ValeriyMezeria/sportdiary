@@ -20,7 +20,6 @@ class Model_Main extends Model
 		
 		extract($_POST, EXTR_OVERWRITE);
 		
-		var_dump($first_name);
 		
 		if ($_POST['password'] != $_POST['repeat_password'])
 			$result = 'Uncorrect repeating password!';
@@ -40,15 +39,7 @@ class Model_Main extends Model
 														\''.$weight.'\',
 														\''.$gender.'\');');
 			
-			var_dump('INSERT INTO users (first_name, last_name, email, password, birthday, height, weight, gender) 
-												VALUES(\''.$first_name.'\',
-														\''.$last_name.'\',
-														\''.$email.'\',
-														\''.$password.'\',
-														\''.$birth.'\',
-														\''.$height.'\',
-														\''.$weight.'\',
-														\''.$gender.'\');');
+
 			
 			$query_result = $connection->query('SELECT id FROM users ORDER by id DESC LIMIT 1;');	
 			$row = $query_result->fetch_assoc();

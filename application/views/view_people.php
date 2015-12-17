@@ -84,14 +84,14 @@ function is_subscribe($id, $options)
 
 		<div id="filter_box"> 
 			<p>Country:<br>
-			<input type="text" name="country" value="" pattern="^[A-Za-zÀ-ßà-ÿ¨¸\s]+$" placeholder="Ukraine"></p>
+			<input type="text" name="country" value=""  placeholder="Ukraine"></p>
 			<p>City:<br>
-			<input type="text" name="city" value="" pattern="^[A-Za-zÀ-ßà-ÿ¨¸\s]+$" placeholder="Kyiv"></p>
+			<input type="text" name="city" value=""  placeholder="Kyiv"></p>
 			
 			<p>Age from
-			<input type="text" name="min_age" value="" id="text_age" pattern="[0-9]{2}" placeholder="16">
+			<input type="text" name="age_min" value="" id="text_age" pattern="[0-9]{2}" placeholder="16">
 			to
-			<input type="text" name="max_age" value="" id="text_age" pattern="[0-4]{2}" placeholder="40"></p>
+			<input type="text" name="age_max" value="" id="text_age" pattern="[0-9]{2}" placeholder="40"></p>
 			
 			<p>Gender:
 			<input type="radio"  name="gender" value="1" checked> Man

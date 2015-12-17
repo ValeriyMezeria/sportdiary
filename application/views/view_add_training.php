@@ -49,12 +49,12 @@ echo '<div id="add_training">
 			<table border="1" class="table_exercise" id="table_exercise">
 				<tr>
 					<td><b>Exercise</b></td>
-					<td width="100px"><b>Approache</b></td>
-					<td width="100px"><b>Repetition</b></td>
-					<td width="100px"><b>Value</b></td>
-					<td width="100px"><b>Result</b></td>
-					<td width="100px"><b>Intensity</b></td>
-					<td width="30px" onclick="addNewRow()"> + </td>
+					<td "><b>Approache</b></td>
+					<td "><b>Repetition</b></td>
+					<td "><b>Value</b></td>
+					<td "><b>Result</b></td>
+					<td ><b>Intensity</b></td>
+					<td class="training_done" onclick="addNewRow()"> add </td>
 				</tr>
 				<tr id="row">
 					<td><select type="status" name="exercise[]" >';
@@ -71,7 +71,7 @@ echo '<div id="add_training">
 					<td><input type="text" name="repetition[]" ></td>
 					<td><input type="text" name="value[]"></td>
 					<td><input type="text" name="result[]" ></td>
-					<td><select  name="intensity[]" >
+					<td><select type="intensity" name="intensity[]" >
 								<option value="5"> On limit </option>
 								<option value="4"> Hard </option>
 								<option value="3"> Medium </option>
@@ -79,7 +79,7 @@ echo '<div id="add_training">
 								<option value="1"> Very light </option>
 							</select></td>
 					</td>
-					<td onclick="removeRow(this)"><b>-</b></td>
+					<td class="training_missed" onclick="removeRow(this)">delete</td>
 				</tr>
 			</table><br>
 		
