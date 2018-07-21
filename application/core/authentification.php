@@ -10,7 +10,6 @@ class Authentification
 	private $SESSION_VALID_TIME = 6000;
 	
 	
-	
 	public function check()
 	{
 		if(isset($_SESSION['user_email']) && !empty($_SESSION['user_email']) && time() - $_SESSION['last_active'] < $this->SESSION_VALID_TIME)
@@ -32,7 +31,6 @@ class Authentification
 	{
 		$model = new Model();
 		$this->connection = $model->get_connection();
-			//$this->connection = new mysqli('sql4.freemysqlhosting.net', 'sql497000', 'bGNjUbh2SS', 'sql497000');
 		$this->check();
 	}
 	

@@ -7,8 +7,7 @@ class Model
 	
 	function __construct()
 	{
-		$this->connection = new mysqli('localhost', 'root', 'valera_1996', 'sportdiary');
-		//$this->connection = new mysqli('sql4.freemysqlhosting.net', 'sql497000', 'bGNjUbh2SS', 'sql497000');
+		$this->connection = new mysqli('localhost', 'root', 'root', 'sportdiary');
 	}
 	
 	function get_connection()
@@ -16,7 +15,7 @@ class Model
 		return $this->connection;
 	}
 	
-	//methods for simply database queries
+	//methods for simple database queries
 	
 	protected function get_data_from_table($table_name, $list_of_fields, $conditions = null,$limit = null)
 	{
